@@ -5,8 +5,8 @@ class Documento
     public function __construct(
         private string $nombre,
         private TipoDocumento $tipo,
-        private string $fechaDocumento,
-        private string $fechaRegistro,
+        private DateTime $fechaDocumento,
+        private DateTime $fechaRegistro,
         private string $lugar
     ) {}
 
@@ -15,7 +15,7 @@ class Documento
         return $this->nombre;
     }
 
-    public function getFechaRegistro(): string 
+    public function getFechaRegistro(): DateTime
     {
         return $this->fechaRegistro;
     }

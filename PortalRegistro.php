@@ -4,18 +4,24 @@ class PortalRegistro
 {
     public function __construct(
         private string $nombrePortal, 
-        private array $portal = []
+        private array $documentos = []
     ) {}
+
+    public function anadirDocumento(Documento $documento): void
+    {
+        $this->documentos[] = $documento;
+    }
 
     public function getNombre(): string
     {
         return $this->nombrePortal;
     }
 
-    public function documentoMasTiempoArchivado(array $documentos): string
+    public function documentoMasTiempoArchivado(): string
     {
-        $resultado = $documentos[0];
-        foreach ($documentos as $documento) {
+        $resultado = $this->documentos[0];
+
+        foreach ($this->documentos as $documento) {
             if ($documento->getFechaRegistro() < $resultado->getFechaRegistro()) {
                 $resultado = $documento;
             }
@@ -23,10 +29,11 @@ class PortalRegistro
         return $resultado->getNombre();
     }
 
-    public function comparacionDeFechas(array $documentos, string $fechaInicio, string $fechaFin): array
+    public function comprendidosEntreFechas(DateTime $fechaInicio, DateTime $fechaFin): array
     {
         $documentosEntreFechas = [];
-        foreach ($documentos as $documento) {
+
+        foreach ($this->documentos as $documento) {
             $fechaDocumento = $documento->getFechaRegistro();
             if ($fechaDocumento >= $fechaInicio && $fechaDocumento <= $fechaFin) {
                 $documentosEntreFechas[] = $documento;
