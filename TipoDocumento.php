@@ -7,3 +7,5 @@ enum TipoDocumento: string
     case TEXTO = 'texto';
     case AUDIO = 'audio';
 }
+
+?>
