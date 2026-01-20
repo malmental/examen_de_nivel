@@ -28,5 +28,5 @@ $resultado = $portal->comparacionDeFechas($documentos, $fechaInicio, $fechaFin);
 
 echo 'Documentos encontrados entre: ' . $fechaInicio . ' y ' .  $fechaFin  . PHP_EOL;
 foreach ($resultado as $documento) {
-    echo $documento->getNombre() . $documento->getFechaRegistro() . PHP_EOL;
+    echo $documento->getNombre() . PHP_EOL . $documento->getFechaRegistro() . PHP_EOL;
 }
